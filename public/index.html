@@ -7,14 +7,15 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
     
         <link rel="stylesheet" href="style.css">
-    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.runtime.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="index.js" charset="utf-8" defer></script>
     </head>
 
     <header>
 
         <div class="header-image-container">
-            <img src="logo.png" alt="easyTAsk logo">
+            <img src="logo.png" alt="easyTask logo">
         </div>
             
         <h1 class="site-title"><a href="#">Checklist</a></h1>
@@ -39,7 +40,8 @@
                         <li>Eat food</li>
                         <li>Brush teeth</li>
                         <li>Sleep</li>
-                        <input type="text" id="task-input" placeholder="Add new Task"></input>
+                        <input type="text" name="new-task" id="task-input" placeholder="Click To Add New Task">
+                        <input type="button" id="addTask" name="test" value="Add New Task" onClick="testButton()" style="display: none">
                     </ul>
 
                 </div>
