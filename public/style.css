@@ -65,12 +65,24 @@ body {
   text-decoration: line-through;
 }
 
+.compList li {
+
+  text-decoration: line-through;
+}
+
+.remove {
+
+  float: right;
+  top: 50px;
+  display: none;
+}
+
 #lines {
   border-left: 1px solid #ffaa9f;
   border-right: 1px solid #ffaa9f;
   width: 2px;
   float: left;
-  height: 450px;
+  height: 460px;
   margin-left: 40px;
 }
 
@@ -95,10 +107,16 @@ body {
   color: #f0f0f0;
   font-weight: bold;
   background: #00b894;
-  font-size: 20px;
+  font-size: 18px;
   font-family: 'Courier New', Courier, monospace;
   border: 0px;
   float: right;
+  padding: 0 15px 0 15px;
+}
+
+#addTask:hover {
+
+  background: #0984e3;
 }
 
 
