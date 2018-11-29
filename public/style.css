@@ -81,7 +81,8 @@ body {
   background: #ffeaa7;
   border-bottom: 1px dotted #ccc;
   height: 44px;
-  width: 733px;
+  width: 744px;
+  text-indent: 12px;
   text-transform: capitalize;
   border:0px;
   float: right;
