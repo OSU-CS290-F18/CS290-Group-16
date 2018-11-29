@@ -1,0 +1,24 @@
+{
+  "name": "cs290-group-16",
+  "version": "1.0.0",
+  "description": "easyTask Checklist",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OSU-CS290-F18/CS290-Group-16.git"
+  },
+  "author": "Yevgeniy Lebid, Matthew Laidlaw",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/OSU-CS290-F18/CS290-Group-16/issues"
+  },
+  "homepage": "https://github.com/OSU-CS290-F18/CS290-Group-16#readme",
+  "dependencies": {
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.12"
+  }
+}
