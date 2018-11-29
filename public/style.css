@@ -73,8 +73,12 @@ body {
 .remove {
 
   float: right;
-  top: 50px;
-  display: none;
+  font-size: 14px;
+  text-transform: lowercase;
+}
+
+.hide + .remove {
+  display: block;
 }
 
 #lines {
