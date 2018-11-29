@@ -26,7 +26,6 @@ body {
 }
 
 .due {
- 
   margin: 0 0 15px 0px;
 }
 
@@ -111,7 +110,7 @@ body {
     margin:0px;
     background-color: #ffeaa7;
     max-height: 0;
-    overflow: hidden;
+    overflow: auto;
     transition: max-height 0.2s ease-out;
 }
 

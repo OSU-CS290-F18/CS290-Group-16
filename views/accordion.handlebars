@@ -1,0 +1,24 @@
+<div class="due">
+  <button class="accordion">To Do</button>
+  <div class="panel" id="incomplete-tasks-panel">
+    <div class="lines"></div>
+      <ul class="list" id="incomplete-tasks-list">
+        {{#each incompleteTasks}}
+          {{> task}}
+        {{/each}}
+        {{> inputTask}}
+      </ul>
+  </div>
+</div>
+
+<div class="done">
+  <button class="accordion">Completed</button>
+  <div class="panel" id="incomplete-tasks-panel">
+    <div class="lines"></div>
+      <ul class="list" id="completed-tasks-list">
+        {{#each completedTasks}}
+          {{> task}}
+        {{/each}}
+      </ul>
+  </div>
+</div>
