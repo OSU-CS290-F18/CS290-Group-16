@@ -21,9 +21,11 @@
   },
   "homepage": "https://github.com/OSU-CS290-F18/CS290-Group-16#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
-    "handlebars": "^4.0.12"
+    "handlebars": "^4.0.12",
+    "mongodb": "^3.1.10"
   },
   "devDependencies": {
     "nodemon": "^1.18.7"

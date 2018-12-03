@@ -47,6 +47,8 @@ body {
 }
 
 .list li {
+  display: inline-block;
+  width: 100%;
   list-style: none;
   border-bottom: 1px dotted #ccc;
   text-indent: 25px;
@@ -132,4 +134,15 @@ body {
 
 .doneList:hover {
   text-decoration: none;
+}
+
+.remove-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
