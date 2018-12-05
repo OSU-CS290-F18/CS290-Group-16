@@ -1,24 +1,33 @@
 {
   "name": "cs290-group-16",
   "version": "1.0.0",
-  "description": "easyTask Checklist",
+  "description": "List of tasks to do, and list of completed tasks.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "handlebars views/partials/task.handlebars -f public/taskTemplate.js",
+    "prestart": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/OSU-CS290-F18/CS290-Group-16.git"
   },
-  "author": "Yevgeniy Lebid, Matthew Laidlaw",
-  "license": "UNLICENSED",
+  "author": "Laidlaw, Lebid",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/OSU-CS290-F18/CS290-Group-16/issues"
   },
   "homepage": "https://github.com/OSU-CS290-F18/CS290-Group-16#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
-    "handlebars": "^4.0.12"
+    "handlebars": "^4.0.12",
+    "mongodb": "^3.1.10"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
   }
 }

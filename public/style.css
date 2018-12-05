@@ -26,7 +26,7 @@ body {
 }
 
 .due {
- 
+
   margin: 0 0 15px 0px;
 }
 
@@ -71,10 +71,14 @@ body {
 }
 
 .remove {
-
+  display: none;
   float: right;
   font-size: 14px;
   text-transform: lowercase;
+}
+
+li:hover .remove {
+  display: block;
 }
 
 .hide + .remove {
@@ -101,13 +105,13 @@ body {
   text-indent: 12px;
   text-transform: capitalize;
   border:0px;
-  margin: 0 0 0 55px;
+  margin: 0 0 0 22px;
   float: left;
   outline: none;
 }
 
 #addTask {
-  height: 44px;
+  height: 46px;
   color: #f0f0f0;
   font-weight: bold;
   background: #00b894;
