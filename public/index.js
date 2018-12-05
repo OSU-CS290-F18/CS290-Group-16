@@ -1,18 +1,57 @@
-var acc = document.getElementsByClassName("accordion");
-var i;
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight){
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
-  });
+if(dd<10) {
+    dd = '0'+dd
 }
 
+if(mm<10) {
+    mm = '0'+mm
+}
+
+today = 'Today: ' + mm + ' / ' + dd + ' / ' + yyyy;
+document.getElementById('date').innerHTML = today;
+
+$(document).ready(function() {
+    $(":text").keyup(function(e) {
+        if($(this).val() != '') {
+            $(":text").not(this).attr('disabled','disabled');
+            $(this).next("input").show();
+        } else {
+            $(":text").removeAttr('disabled');
+            $(this).next("input").hide();
+        }
+    });
+});
+
+var acc = document.getElementsByClassName("accordion");
+var panel = document.getElementsByClassName('panel');
+var lines = document.getElementById("lines")
+
+for (var i = 0; i < acc.length; i++) {
+    acc[i].onclick = function() {
+    	var setClasses = !this.classList.contains('active');
+        setClass(acc, 'active', 'remove');
+        setClass(panel, 'show', 'remove');
+
+       	if (setClasses) {
+            this.classList.toggle("active");
+            this.nextElementSibling.classList.toggle("show");
+        }
+    }
+}
+
+function setClass(els, className, fnName) {
+    for (var i = 0; i < els.length; i++) {
+        els[i].classList[fnName](className);
+    }
+}
+
+
+
+// Add new task after hitting enter on input task line
 var inputTaskLine = document.querySelector("#task-input");
 inputTaskLine.addEventListener("keyup", function(event) {
   event.preventDefault();
@@ -42,7 +81,38 @@ inputTaskLine.addEventListener("keyup", function(event) {
     postRequest.setRequestHeader('Content-Type', 'application/json');
     postRequest.send(requestBody);
 
+    location.reload();
   }
+});
+
+var inputTaskButton = document.querySelector("#addTask");
+inputTaskButton.addEventListener("click", function(event) {
+  var postRequest = new XMLHttpRequest();
+  var requestURL = '/insertTask';
+  postRequest.open('POST', requestURL);
+
+  var requestBody = JSON.stringify({
+    description: inputTaskLine.value
+  });
+
+  postRequest.addEventListener('load', function (event) {
+    if (event.target.status === 200) {
+      var newTaskContext = {
+        description: inputTaskLine.value
+      }
+      var newTaskHTML = Handlebars.templates.task(newTaskContext);
+      inputTaskLine.insertAdjacentHTML("beforebegin", newTaskHTML);
+      inputTaskLine.value = "";
+    }
+    else {
+      alert("Error storing task: " + event.target.response);
+    }
+  });
+
+  postRequest.setRequestHeader('Content-Type', 'application/json');
+  postRequest.send(requestBody);
+
+  location.reload();
 });
 
 var removeButtons = document.querySelectorAll('.remove-button');
@@ -78,6 +148,7 @@ removeButtons.forEach(function(elem) {
     postRequest.setRequestHeader('Content-Type', 'application/json');
     postRequest.send(requestBody);
 
+    location.reload();
   });
 });
 
@@ -118,5 +189,6 @@ taskText.forEach(function(elem) {
     postRequest.setRequestHeader('Content-Type', 'application/json');
     postRequest.send(requestBody);
 
+    location.reload();
   });
 });

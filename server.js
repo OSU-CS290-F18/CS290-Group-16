@@ -23,6 +23,25 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
+app.get('/', function (req, res, next) {
+  var incompleteTasks = mongoDB.collection('incomplete');
+  incompleteTasks.find({}).toArray(function(err, incompleteDoc) {
+    if (err) {
+      res.status(500).send("Error communicating with the DB");
+    }
+    var completedTasks = mongoDB.collection('complete');
+    completedTasks.find({}).toArray(function(err, completeDoc) {
+      if (err) {
+        res.status(500).send("Error communicating with the DB");
+      }
+      res.status(200).render('accordion', {
+        incompleteTasks: incompleteDoc,
+        completedTasks: completeDoc
+      });
+    });
+  });
+});
+
 app.post('/insertTask', function (req, res, next) {
   if (req.body && req.body.description) {
     var incompleteTasks = mongoDB.collection('incomplete');
@@ -79,25 +98,6 @@ app.post('/moveTask', function (req, res, next) {
     );
     res.status(200).send("Success");
   }
-});
-
-app.get('/', function (req, res, next) {
-  var incompleteTasks = mongoDB.collection('incomplete');
-  incompleteTasks.find({}).toArray(function(err, incompleteDoc) {
-    if (err) {
-      res.status(500).send("Error communicating with the DB");
-    }
-    var completedTasks = mongoDB.collection('complete');
-    completedTasks.find({}).toArray(function(err, completeDoc) {
-      if (err) {
-        res.status(500).send("Error communicating with the DB");
-      }
-      res.status(200).render('accordion', {
-        incompleteTasks: incompleteDoc,
-        completedTasks: completeDoc
-      });
-    });
-  });
 });
 
 app.get('*', function (req, res, next) {

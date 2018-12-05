@@ -26,6 +26,7 @@ body {
 }
 
 .due {
+
   margin: 0 0 15px 0px;
 }
 
@@ -47,8 +48,6 @@ body {
 }
 
 .list li {
-  display: inline-block;
-  width: 100%;
   list-style: none;
   border-bottom: 1px dotted #ccc;
   text-indent: 25px;
@@ -66,12 +65,32 @@ body {
   text-decoration: line-through;
 }
 
-.lines {
+.compList li {
+
+  text-decoration: line-through;
+}
+
+.remove {
+  display: none;
+  float: right;
+  font-size: 14px;
+  text-transform: lowercase;
+}
+
+li:hover .remove {
+  display: block;
+}
+
+.hide + .remove {
+  display: block;
+}
+
+#lines {
   border-left: 1px solid #ffaa9f;
   border-right: 1px solid #ffaa9f;
   width: 2px;
   float: left;
-  height: 60%;
+  height: 460px;
   margin-left: 40px;
 }
 
@@ -82,12 +101,32 @@ body {
   background: #ffeaa7;
   border-bottom: 1px dotted #ccc;
   height: 44px;
-  width: 744px;
+  width: 588px;
   text-indent: 12px;
   text-transform: capitalize;
   border:0px;
-  float: right;
+  margin: 0 0 0 22px;
+  float: left;
+  outline: none;
 }
+
+#addTask {
+  height: 46px;
+  color: #f0f0f0;
+  font-weight: bold;
+  background: #00b894;
+  font-size: 18px;
+  font-family: 'Courier New', Courier, monospace;
+  border: 0px;
+  float: right;
+  padding: 0 15px 0 15px;
+}
+
+#addTask:hover {
+
+  background: #0984e3;
+}
+
 
 .accordion {
   background-color: #ffeaa7;
@@ -111,9 +150,16 @@ body {
     padding: 0 18px 0 0;
     margin:0px;
     background-color: #ffeaa7;
-    max-height: 0;
-    overflow: auto;
-    transition: max-height 0.2s ease-out;
+    overflow: hidden;
+    transition: height 0.2s ease-out;
+}
+
+div.panel {
+  display: none;
+}
+
+div.panel.show {
+  display: block !important;
 }
 
 .accordion:after {
@@ -134,15 +180,4 @@ body {
 
 .doneList:hover {
   text-decoration: none;
-}
-
-.remove-button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 5px 12px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
 }
