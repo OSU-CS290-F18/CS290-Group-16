@@ -1,6 +1,6 @@
 var today = new Date();
 var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
+var mm = today.getMonth()+1;
 var yyyy = today.getFullYear();
 
 if(dd<10) {
@@ -14,6 +14,7 @@ if(mm<10) {
 today = 'Today: ' + mm + ' / ' + dd + ' / ' + yyyy;
 document.getElementById('date').innerHTML = today;
 
+//Add task button
 $(document).ready(function() {
     $(":text").keyup(function(e) {
         if($(this).val() != '') {
@@ -26,6 +27,7 @@ $(document).ready(function() {
     });
 });
 
+//Accordion to show hide 
 var acc = document.getElementsByClassName("accordion");
 var panel = document.getElementsByClassName('panel');
 var lines = document.getElementById("lines")
@@ -85,6 +87,7 @@ inputTaskLine.addEventListener("keyup", function(event) {
   }
 });
 
+//Add task button action
 var inputTaskButton = document.querySelector("#addTask");
 inputTaskButton.addEventListener("click", function(event) {
   var postRequest = new XMLHttpRequest();
@@ -115,6 +118,7 @@ inputTaskButton.addEventListener("click", function(event) {
   location.reload();
 });
 
+//Remove task from the dom button
 var removeButtons = document.querySelectorAll('.remove-button');
 removeButtons.forEach(function(elem) {
   elem.addEventListener('click', function(event) {
